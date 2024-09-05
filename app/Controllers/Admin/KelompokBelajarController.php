@@ -129,14 +129,6 @@ class KelompokBelajarController extends BaseController
                     'status_murid_id' => 2
                 ]
             );
-
-            $this->pengajarModel->update(
-                $kelompok_belajar["mitra_pengajar_id"],
-                [
-                    'status_id' => 2
-                ]
-            );
-
             $alert = [
                 'success' => 'Kelompok Belajar Berhasil di Hapus !'
             ];
