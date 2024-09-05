@@ -132,7 +132,7 @@ $routes->group('auth', static function ($routes) {
 });
 
 $routes->group('mitra_pengajar', static function ($routes) {
-    $routes->get('dashboard', 'Admin\DashboardController::index');
+    $routes->get('dashboard', 'Mitra\DashboardController::index');
     $routes->get('materi_belajar', 'Mitra\MateriBelajarController::index');
     $routes->get('data_pengajar', 'Mitra\PengajarController::index');
     $routes->get('data_pengajar/view/(:any)', 'Admin\PengajarController::view/$1');
