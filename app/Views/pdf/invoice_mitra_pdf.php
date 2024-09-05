@@ -19,7 +19,7 @@
             text-align: center;
             box-sizing: border-box;
             border: 1px solid;
-            text-transform: capitalize;
+            /* text-transform: capitalize; */
             height: 50px;
             border-collapse: collapse
         }

@@ -13,7 +13,7 @@
             text-align: center;
             box-sizing: border-box;
             border: 1px solid;
-            text-transform: capitalize;
+            /* text-transform: capitalize; */
         }
 
         .logo {
@@ -200,7 +200,7 @@
                 </tr>
                 <tr>
                     <th colspan="3" style="border: 0;"></th>
-                    <th style="border: 0;">Annisa Shofaril Wahidah Y, S.Pd.</th>
+                    <th style="border: 0;"> <span>Annisa Shofaril Wahidah Y, S.Pd.</span></th>
                 </tr>
             </tfoot>
         </table>
