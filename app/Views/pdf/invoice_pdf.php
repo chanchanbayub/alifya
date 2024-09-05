@@ -200,7 +200,7 @@
                 </tr>
                 <tr>
                     <th colspan="3" style="border: 0;"></th>
-                    <th style="border: 0;">Annisa Shofaril Wahidah Y</th>
+                    <th style="border: 0;">Annisa Shofaril Wahidah Y, S.Pd.</th>
                 </tr>
             </tfoot>
         </table>
