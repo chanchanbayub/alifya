@@ -97,14 +97,14 @@
 
                     <div class="mb-3">
                         <label for="tanggal_masuk" class="col-form-label">Tanggal Masuk :</label>
-                        <input type="date" name="tanggal_masuk" id="tanggal_masuk" class="form-control" value="<?= date('Y-m-d') ?>" disabled>
+                        <input type="date" name="tanggal_masuk" id="tanggal_masuk" class="form-control" value="<?= date('Y-m-d') ?>">
                         <div class=" invalid-feedback error-tanggal-masuk">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="jam_masuk" class="col-form-label">Jam Masuk :</label>
-                        <input type="time" name="jam_masuk" id="jam_masuk" class="form-control" value="<?= date('H:i') ?>" disabled>
+                        <input type="time" name="jam_masuk" id="jam_masuk" class="form-control" value="<?= date('H:i') ?>">
                         <div class="invalid-feedback error-jam-masuk">
                         </div>
                     </div>
