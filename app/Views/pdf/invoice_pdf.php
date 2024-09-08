@@ -13,7 +13,13 @@
             text-align: center;
             box-sizing: border-box;
             border: 1px solid;
+            margin: 0 auto;
             /* text-transform: capitalize; */
+        }
+
+        table {
+            margin: 0 auto;
+            /* width: 100%; */
         }
 
         .logo {
@@ -26,6 +32,7 @@
 
         #pengantar {
             text-align: left;
+            margin: 0 auto;
         }
 
         .cap {
@@ -157,7 +164,6 @@
                 <tr>
                     <th scope="col">Pertemuan</th>
                     <th scope="col">Tanggal</th>
-
                     <th scope="col">Upah / Jam</th>
                 </tr>
             </thead>
@@ -173,32 +179,32 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="3">Total Pembayaran</th>
+                    <th colspan="2">Total Pembayaran</th>
                     <th>Rp. <?= number_format($total * $harga) ?></th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                 </tr>
                 <tr>
-                    <th colspan="3" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                     <th style="border: 0;">Tasikmalaya, <?= date('d F Y') ?></th>
                 </tr>
                 <tr>
-                    <th colspan="3" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                     <th style="border: 0;">Founder,</th>
                 </tr>
                 <tr>
-                    <th colspan="3" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                     <th style="border: 0;"><img src="assets/img/ttd_anisa.png" alt="" class="ttd"></th>
                 </tr>
                 <tr>
-                    <th colspan="3" style="border: 0;"></th>
+                    <th colspan="2" style="border: 0;"></th>
                     <th style="border: 0;"> <span>Annisa Shofaril Wahidah Y, S.Pd.</span></th>
                 </tr>
             </tfoot>

@@ -6,24 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice </title>
     <style>
-        /* #table {
-            padding: 20px 20px;
-        } */
-
-
         #table th,
         td {
             width: 100%;
-            /* border: 1px solid black; */
-            font-size: 20px;
+            border: 1px solid black;
             text-align: center;
             box-sizing: border-box;
             border: 1px solid;
+            margin: 0 auto;
             /* text-transform: capitalize; */
-            height: 50px;
-            border-collapse: collapse
         }
 
+        table {
+            margin: 0 auto;
+            /* width: 100%; */
+        }
 
         .logo {
             text-align: center;
@@ -35,6 +32,15 @@
 
         #pengantar {
             text-align: left;
+            margin: 0 auto;
+        }
+
+        .cap {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 200;
+            z-index: -1;
         }
 
         .container {
@@ -42,15 +48,6 @@
             width: 100%;
             border: 1px solid black;
             padding: 40px 20px;
-        }
-
-        .cap {
-            box-sizing: border-box;
-            /* position: absolute;
-            left: 0px;
-            top: 0px; */
-            width: 180;
-            /* z-index: -1; */
         }
     </style>
 </head>
@@ -94,33 +91,33 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="4">Media Pembelajaran</th>
+                    <th colspan="3">Media Pembelajaran</th>
                     <th>Rp. <?= number_format($media_belajar->harga_media) ?></th>
                 </tr>
                 <tr>
-                    <th colspan="4">Total Pembayaran</th>
+                    <th colspan="3">Total Pembayaran</th>
                     <th>Rp. <?= number_format($total * $harga->harga_mitra + $media_belajar->harga_media) ?></th>
                 </tr>
 
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="3" style="border: 0;"></th>
                     <th style="border: 0;">Tasikmalaya, <?= date('d F Y') ?></th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="3" style="border: 0;"></th>
                     <th style="border: 0;">Founder,</th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="3" style="border: 0;"></th>
                     <th style="border: 0;"><img src="assets/img/ttd_anisa.png" alt="" class="ttd"></th>
                 </tr>
                 <tr>
-                    <th colspan="4" style="border: 0;"></th>
+                    <th colspan="3" style="border: 0;"></th>
                     <th style="border: 0;">Annisa Shofaril Wahidah Y, S.Pd.</th>
                 </tr>
             </tfoot>
         </table>
-        <img src="assets/img/cap.png" alt="" style="margin-left:890px; margin-top:-150px;" class="cap">
+        <img src="assets/img/cap.png" alt="" style="margin-left:820px; margin-top:-200px;" class="cap">
     </div>
 </body>
 
