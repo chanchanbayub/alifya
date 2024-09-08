@@ -78,7 +78,6 @@
                     <th scope="col">Pertemuan</th>
                     <th scope="col">Nama Anak</th>
                     <th scope="col">Tanggal</th>
-                    <th scope="col">Jam</th>
                     <th scope="col">Harga / Pertemuan</th>
                 </tr>
             </thead>
@@ -89,7 +88,6 @@
                         <td>Pertemuan Ke -<?= $no++ ?> </td>
                         <td><?= $invoice->nama_lengkap_anak ?> </td>
                         <td> <?= tanggal_indonesia(date('Y-m-d', strtotime($invoice->tanggal_masuk))) ?>, <?= date_indo(date('Y-m-d', strtotime($invoice->tanggal_masuk))) ?></td>
-                        <td> <?= date('H:i', strtotime($invoice->jam_masuk)) ?> </td>
                         <td> Rp. <?= number_format($harga->harga_mitra) ?> </td>
                     </tr>
                 <?php endforeach; ?>

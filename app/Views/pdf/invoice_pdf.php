@@ -157,7 +157,7 @@
                 <tr>
                     <th scope="col">Pertemuan</th>
                     <th scope="col">Tanggal</th>
-                    <th scope="col">Jam</th>
+
                     <th scope="col">Upah / Jam</th>
                 </tr>
             </thead>
@@ -167,7 +167,6 @@
                     <tr>
                         <td>Pertemuan Ke -<?= $no++ ?> </td>
                         <td> <?= tanggal_indonesia(date('Y-m-d', strtotime($invoice->tanggal_masuk))) ?>, <?= date_indo(date('Y-m-d', strtotime($invoice->tanggal_masuk))) ?></td>
-                        <td> <?= date('H:i', strtotime($invoice->jam_masuk)) ?> </td>
                         <td>Rp. <?= number_format($harga) ?></td>
                     </tr>
                 <?php endforeach; ?>
