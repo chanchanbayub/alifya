@@ -36,7 +36,7 @@ class PresensiController extends BaseController
 
         $data = [
             'title' => 'Presensi Mitra Pengajar',
-            'presensi' => $this->presensiModel->getDataPresensi(),
+            'presensi' => $this->presensiModel->getPresensi(session()->get('mitra_pengajar_id')),
             'mitra_pengajar' => $kelompokPengajar,
 
         ];
