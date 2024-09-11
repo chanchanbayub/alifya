@@ -149,10 +149,22 @@ class AbsensiController extends BaseController
 
             $peserta_didik = $this->kelompokBelajarModel->getPesertaDidikWhereMitraPengajar($absensi->mitra_pengajar_id);
 
+            $tanggal = date_indo(date('Y-m-d', strtotime($absensi->tanggal)));
+
+            $hari = tanggal_indonesia(date('Y-m-d', strtotime($absensi->tanggal)));
+            // $tanggal_absen = $tanggal + $hari;
+
+            $tanggal_dua = date_indo(date('Y-m-d', strtotime($absensi->pergantian_jadwal)));
+            $hari_dua = tanggal_indonesia(date('Y-m-d', strtotime($absensi->pergantian_jadwal)));
+
             $data = [
+                'tanggal' => $tanggal,
+                'hari' => $hari,
                 'absensi' => $absensi,
                 'mitra_pengajar' => $mitra_pengajar,
-                'murid' => $peserta_didik
+                'murid' => $peserta_didik,
+                'tanggal_dua' => $tanggal_dua,
+                'hari_dua' => $hari_dua,
             ];
 
             return json_encode($data);
@@ -182,26 +194,37 @@ class AbsensiController extends BaseController
         if ($this->request->isAJAX()) {
 
             if (!$this->validate([
+                'tanggal' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Tanggal Tidak Boleh Kosong !'
+                    ]
+                ],
                 'mitra_pengajar_id' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => 'Upah Tidak Boleh Kosong !'
+                        'required' => 'Mitra Pengajar Tidak Boleh Kosong !'
                     ]
                 ],
-
                 'peserta_didik_id' => [
                     'rules' => 'required',
                     'errors' => [
                         'required' => 'Peserta Didik Tidak Boleh Kosong !'
                     ]
                 ],
-                'bulan_mitra' => [
+                'absen' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => 'Bulan Tidak Boleh Kosong !'
+                        'required' => 'Absen Tidak Boleh Kosong !'
                     ]
                 ],
-                'harga_mitra' => [
+                'keterangan' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Upah Tidak Boleh Kosong !'
+                    ]
+                ],
+                'pergantian_jadwal' => [
                     'rules' => 'required',
                     'errors' => [
                         'required' => 'Upah Tidak Boleh Kosong !'
@@ -211,30 +234,35 @@ class AbsensiController extends BaseController
             ])) {
                 $alert = [
                     'error' => [
+                        'tanggal' => $this->validation->getError('tanggal'),
                         'mitra_pengajar_id' => $this->validation->getError('mitra_pengajar_id'),
                         'peserta_didik_id' => $this->validation->getError('peserta_didik_id'),
-                        'bulan_mitra' => $this->validation->getError('bulan_mitra'),
-                        'harga_mitra' => $this->validation->getError('harga_mitra'),
+                        'absen' => $this->validation->getError('absen'),
+                        'keterangan' => $this->validation->getError('keterangan'),
+                        'pergantian_jadwal' => $this->validation->getError('pergantian_jadwal'),
 
                     ]
                 ];
             } else {
                 $id = $this->request->getPost('id');
+                $tanggal = $this->request->getPost('tanggal');
                 $mitra_pengajar_id = $this->request->getPost('mitra_pengajar_id');
                 $peserta_didik_id = $this->request->getPost('peserta_didik_id');
-                $bulan = $this->request->getPost('bulan_mitra');
-                $harga = $this->request->getPost('harga_mitra');
+                $absen = $this->request->getPost('absen');
+                $keterangan = $this->request->getPost('keterangan');
+                $pergantian_jadwal = $this->request->getPost('pergantian_jadwal');
 
-                $this->hargaMitraModel->update($id, [
+                $this->absensiModel->update($id, [
+                    'tanggal' => strtolower($tanggal),
                     'mitra_pengajar_id' => strtolower($mitra_pengajar_id),
                     'peserta_didik_id' => strtolower($peserta_didik_id),
-                    'bulan_mitra' => strtolower($bulan),
-                    'harga_mitra' => strtolower($harga),
-
+                    'absen' => strtolower($absen),
+                    'keterangan' => strtolower($keterangan),
+                    'pergantian_jadwal' => strtolower($pergantian_jadwal),
                 ]);
 
                 $alert = [
-                    'success' => 'Upah Mitra Berhasil di Ubah !'
+                    'success' => 'Absensi Berhasil di Ubah !'
                 ];
             }
 

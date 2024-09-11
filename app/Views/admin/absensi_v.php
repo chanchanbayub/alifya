@@ -173,6 +173,12 @@
                     <div class="form_group">
                         <div class="mb-3">
                             <input type="hidden" class="form-control" id="id_edit" name="id">
+                            <div class="mb-3">
+                                <label for="date" class="col-form-label">Tanggal :</label>
+                                <input type="date" class="form-control" id="tanggal_edit" name="tanggal">
+                                <div class="invalid-feedback error-tanggal-edit">
+                                </div>
+                            </div>
                             <label for="mitra_pengajar_id_edit" class="col-form-label">Mitra Pengajar :</label>
                             <select name="mitra_pengajar_id" id="mitra_pengajar_id_edit" class="form-select">
                                 <option value="">--Silahkan Pilih--</option>
@@ -195,32 +201,29 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bulan_mitra_edit" class="col-form-label">Bulan :</label>
-                        <select name="bulan_mitra" id="bulan_mitra_edit" class="form-select">
+                        <label for="absen_edit" class="col-form-label">Absen :</label>
+                        <select name="absen" id="absen_edit" class="form-select">
                             <option value="">--Silahkan Pilih--</option>
-                            <option value="1">Januari</option>
-                            <option value="2">Februari</option>
-                            <option value="3">Maret</option>
-                            <option value="4">April</option>
-                            <option value="5">Mei</option>
-                            <option value="6">Juni</option>
-                            <option value="7">Juli</option>
-                            <option value="8">Agustus</option>
-                            <option value="9">September</option>
-                            <option value="10">Oktober</option>
-                            <option value="11">November</option>
-                            <option value="12">Desember</option>
+                            <option value="1">Anak Izin</option>
+                            <option value="2">Miss Izin</option>
+                            <option value="3">Anak Sakit</option>
+                            <option value="4">Miss Sakit</option>
                         </select>
                         <div class="invalid-feedback error-bulan-mitra-edit">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="mb-3">
+                        <label for="keterangan_edit" class="col-form-label">Keterangan :</label>
+                        <textarea name="keterangan" id="keterangan_edit" class="form-control"></textarea>
+                        <div class="invalid-feedback error-keterangan-edit">
+                        </div>
+                    </div>
 
-                        <label for="harga_mitra_edit" class="col-form-label"><?= $title ?> :</label>
-                        <input type="number" class="form-control" id="harga_mitra_edit" name="harga_mitra">
-                        <div class="invalid-feedback error-harga-mitra-edit">
-
+                    <div class="mb-3">
+                        <label for="pergantian_jadwal_edit" class="col-form-label">Pergantian Jadwal :</label>
+                        <input type="date" class="form-control" id="pergantian_jadwal_edit" name="pergantian_jadwal">
+                        <div class="invalid-feedback error-pergantian-jadwal-edit">
                         </div>
                     </div>
 
@@ -334,6 +337,20 @@
         $('#absen').select2({
             theme: 'bootstrap-5',
             dropdownParent: $('#exampleModal')
+        });
+
+        $('#absen_edit').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $('#editModal')
+        });
+        $('#mitra_pengajar_id_edit').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $('#editModal')
+        });
+
+        $('#peserta_didik_id_edit').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $('#editModal')
         });
 
         // $('#mitra_pengajar_id_edit').select2({
@@ -467,7 +484,11 @@
                 id: id,
             },
             success: function(response) {
-                $("#tanggal_data").html(response.absensi.tanggal)
+                let hari = response.hari;
+                let tanggal = response.tanggal;
+
+                let tanggal_absen = `${hari}, ${tanggal}`;
+                $("#tanggal_data").html(tanggal_absen)
                 $("#mitra_pengajar_data").html(response.absensi.nama_lengkap)
                 $("#peserta_didik_data").html(response.absensi.nama_lengkap_anak)
                 if (response.absensi.absen == 1) {
@@ -480,8 +501,11 @@
                     $("#absen_data").html('Miss Sakit')
                 }
 
+                let hari_dua = response.hari_dua;
+                let tanggal_dua = response.tanggal_dua;
+                let pergantian = `${hari_dua}, ${tanggal_dua}`
                 $("#keterangan_data").html(response.absensi.keterangan)
-                $("#pergantian_jadwal_data").html(response.absensi.pergantian_jadwal)
+                $("#pergantian_jadwal_data").html(pergantian)
             }
         });
     });
@@ -491,19 +515,22 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $.ajax({
-            url: '/admin/harga_mitra/edit',
+            url: '/admin/absensi/edit',
             method: 'get',
             dataType: 'JSON',
             data: {
                 id: id,
             },
             success: function(response) {
-                console.log(response.harga_mitra);
+                // console.log(response.harga_mitra);
 
-                $("#id_edit").val(response.harga_mitra.id);
-                $("#harga_mitra_edit").val(response.harga_mitra.harga_mitra);
+                $("#id_edit").val(response.absensi.id);
+                $("#tanggal_edit").val(response.absensi.tanggal);
+                $("#absen_edit").val(response.absensi.absen).trigger('change');
+                $("#keterangan_edit").val(response.absensi.keterangan);
+                $("#pergantian_jadwal_edit").val(response.absensi.pergantian_jadwal);
 
-                $("#bulan_mitra_edit").val(response.harga_mitra.bulan_mitra).trigger('change');
+                // $("#bulan_mitra_edit").val(response.harga_mitra.bulan_mitra).trigger('change');
 
                 let mitra_pengajar_data = `<option value="">--Silahkan Pilih--</option>`;
 
@@ -513,7 +540,7 @@
 
                 $("#mitra_pengajar_id_edit").html(mitra_pengajar_data);
 
-                $("#mitra_pengajar_id_edit").val(response.harga_mitra.mitra_pengajar_id).trigger('change');
+                $("#mitra_pengajar_id_edit").val(response.absensi.mitra_pengajar_id).trigger('change');
 
 
                 let peserta_didik_data = `<option value="">--Silahkan Pilih--</option>`;
@@ -524,7 +551,7 @@
 
                 $("#peserta_didik_id_edit").html(peserta_didik_data);
 
-                $("#peserta_didik_id_edit").val(response.harga_mitra.peserta_didik_id).trigger('change');
+                $("#peserta_didik_id_edit").val(response.absensi.peserta_didik_id).trigger('change');
 
             }
         });
@@ -533,21 +560,25 @@
     $("#edit_form").submit(function(e) {
         e.preventDefault();
         let id = $('#id_edit').val();
+        let tanggal = $('#tanggal_edit').val();
         let mitra_pengajar_id = $('#mitra_pengajar_id_edit').val();
         let peserta_didik_id = $('#peserta_didik_id_edit').val();
-        let bulan_mitra = $('#bulan_mitra_edit').val();
-        let harga = $('#harga_mitra_edit').val();
+        let absen = $('#absen_edit').val();
+        let keterangan = $('#keterangan_edit').val();
+        let pergantian_jadwal = $('#pergantian_jadwal_edit').val();
 
         $.ajax({
-            url: '/admin/harga_mitra/update',
+            url: '/admin/absensi/update',
             method: 'post',
             dataType: 'JSON',
             data: {
                 id: id,
+                tanggal: tanggal,
                 mitra_pengajar_id: mitra_pengajar_id,
                 peserta_didik_id: peserta_didik_id,
-                bulan_mitra: bulan_mitra,
-                harga_mitra: harga,
+                absen: absen,
+                pergantian_jadwal: pergantian_jadwal,
+                keterangan: keterangan,
 
             },
             beforeSend: function() {
@@ -558,6 +589,13 @@
                 $('.update').html('<i class="bi bi-box-arrow-in-right"></i> Kirim');
                 $('.update').prop('disabled', false);
                 if (response.error) {
+                    if (response.error.tanggal) {
+                        $("#tanggal_edit").addClass('is-invalid');
+                        $(".error-tanggal-edit").html(response.error.tanggal);
+                    } else {
+                        $("#tanggal_edit").removeClass('is-invalid');
+                        $(".error-tanggal-edit").html('');
+                    }
                     if (response.error.mitra_pengajar_id) {
                         $("#mitra_pengajar_id_edit").addClass('is-invalid');
                         $(".error-mitra-pengajar-edit").html(response.error.mitra_pengajar_id);
@@ -572,20 +610,27 @@
                         $("#peserta_didik_id_edit").removeClass('is-invalid');
                         $(".error-peserta-didik-edit").html('');
                     }
-                    if (response.error.bulan_mitra) {
-                        $("#bulan_mitra_edit").addClass('is-invalid');
-                        $(".error-bulan_mitra-edit").html(response.error.bulan_mitra);
+                    if (response.error.absen) {
+                        $("#absen_edit").addClass('is-invalid');
+                        $(".error-absen-edit").html(response.error.absen);
                     } else {
-                        $("#bulan_mitra_edit").removeClass('is-invalid');
-                        $(".error-bulan_mitra-edit").html('');
+                        $("#absen_edit").removeClass('is-invalid');
+                        $(".error-absen-edit").html('');
+                    }
+                    if (response.error.keterangan) {
+                        $("#keterangan_edit").addClass('is-invalid');
+                        $(".error-keterangan-edit").html(response.error.keterangan);
+                    } else {
+                        $("#keterangan_edit").removeClass('is-invalid');
+                        $(".error-keterangan-edit").html('');
                     }
 
-                    if (response.error.harga_mitra) {
-                        $("#harga_mitra_edit").addClass('is-invalid');
-                        $(".error-harga-mitra-edit").html(response.error.harga_mitra);
+                    if (response.error.pergantian_jadwal) {
+                        $("#pergantian_jadwal_edit").addClass('is-invalid');
+                        $(".error-pergantian-jadwal-edit").html(response.error.pergantian_jadwal);
                     } else {
-                        $("#harga_mitra_edit").removeClass('is-invalid');
-                        $(".error-harga-mitra-edit").html('');
+                        $("#pergantian_jadwal_edit").removeClass('is-invalid');
+                        $(".error-pergantian-jadwal-edit").html('');
                     }
 
                 } else {
