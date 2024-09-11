@@ -5,6 +5,7 @@ namespace App\Controllers\Mitra;
 use App\Controllers\BaseController;
 use App\Models\Admin\AbsensiModel;
 use App\Models\Admin\PengajarModel as AdminPengajarModel;
+use App\Models\Mitra\AbsensiModel as MitraAbsensiModel;
 use App\Models\Mitra\KelompokBelajarModel;
 use App\Models\Mitra\PengajarModel;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -19,7 +20,7 @@ class AbsensiController extends BaseController
     public function __construct()
     {
         $this->pengajarModel = new AdminPengajarModel();
-        $this->absensiModel = new AbsensiModel();
+        $this->absensiModel = new MitraAbsensiModel();
         $this->validation = \Config\Services::validation();
         $this->kelompokBelajarModel = new KelompokBelajarModel();
 
@@ -28,11 +29,12 @@ class AbsensiController extends BaseController
 
     public function index()
     {
-        $mitra_pengajar = $this->pengajarModel->getDataPengajarStatusAktif();
+
+        $mitra_pengajar = $this->pengajarModel->getMitraPengajarWithId(session()->get('mitra_pengajar_id'));
 
         $data = [
             'title' => 'Absensi Mitra',
-            'absensi' => $this->absensiModel->getDataAbsensi(),
+            'absensi' => $this->absensiModel->getDataAbsensi($mitra_pengajar->id),
             'mitra_pengajar' => $mitra_pengajar,
         ];
 

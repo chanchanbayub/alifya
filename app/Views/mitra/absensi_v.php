@@ -57,12 +57,12 @@
                                                 <button class="btn btn-sm btn-outline-primary" id="views" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="<?= $absensi->id ?>" type="button">
                                                     <i class="bi bi-eye"></i>
                                                 </button>
-                                                <button class="btn btn-sm btn-outline-warning" id="edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $absensi->id ?>" type="button">
+                                                <!-- <button class="btn btn-sm btn-outline-warning" id="edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $absensi->id ?>" type="button">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-danger" id="delete" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?= $absensi->id ?>" type="button">
                                                     <i class="bi bi-trash"></i>
-                                                </button>
+                                                </button> -->
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -102,9 +102,7 @@
                         <label for="mitra_pengajar_id" class="col-form-label">Mitra Pengajar :</label>
                         <select name="mitra_pengajar_id" id="mitra_pengajar_id" class="form-select">
                             <option value="">--Silahkan Pilih--</option>
-                            <?php foreach ($mitra_pengajar as $mitra_pengajar) : ?>
-                                <option value="<?= $mitra_pengajar->id ?>"><?= $mitra_pengajar->nama_lengkap ?></option>
-                            <?php endforeach; ?>
+                            <option value="<?= $mitra_pengajar->id ?>"><?= $mitra_pengajar->nama_lengkap ?></option>
                         </select>
                         <div class="invalid-feedback error-mitra-pengajar">
                         </div>
@@ -388,7 +386,7 @@
             let pergantian_jadwal = $("#pergantian_jadwal").val();
 
             $.ajax({
-                url: '/admin/absensi/insert',
+                url: '/mitra_pengajar/absensi/insert',
                 method: 'post',
                 dataType: 'JSON',
                 data: {
@@ -477,7 +475,7 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $.ajax({
-            url: '/admin/absensi/edit',
+            url: '/mitra_pengajar/absensi/edit',
             method: 'get',
             dataType: 'JSON',
             data: {
@@ -515,7 +513,7 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $.ajax({
-            url: '/admin/absensi/edit',
+            url: '/mitra_pengajar/absensi/edit',
             method: 'get',
             dataType: 'JSON',
             data: {
@@ -568,7 +566,7 @@
         let pergantian_jadwal = $('#pergantian_jadwal_edit').val();
 
         $.ajax({
-            url: '/admin/absensi/update',
+            url: '/mitra_pengajar/absensi/update',
             method: 'post',
             dataType: 'JSON',
             data: {
@@ -660,7 +658,7 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $.ajax({
-            url: '/admin/absensi/edit',
+            url: '/mitra_pengajar/absensi/edit',
             method: 'get',
             dataType: 'JSON',
             data: {
@@ -676,7 +674,7 @@
         e.preventDefault();
         let id = $("#id_delete").val();
         $.ajax({
-            url: '/admin/absensi/delete',
+            url: '/mitra_pengajar/absensi/delete',
             method: 'post',
             dataType: 'JSON',
             data: {
@@ -717,7 +715,7 @@
         let mitra_pengajar_id = $(this).val();
 
         $.ajax({
-            url: '/admin/absensi/getPesertaDidik',
+            url: '/mitra_pengajar/absensi/getPesertaDidik',
             method: 'get',
             dataType: 'JSON',
             data: {

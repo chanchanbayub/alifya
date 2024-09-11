@@ -17,12 +17,13 @@ class AbsensiModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 
-    public function getDataAbsensi()
+    public function getDataAbsensi($mitra_pengajar)
     {
         return $this->table($this->table)
             ->select('absensi_table.id,absensi_table.tanggal, absensi_table.mitra_pengajar_id, absensi_table.peserta_didik_id, absensi_table.absen, absensi_table.keterangan, absensi_table.pergantian_jadwal ,data_murid_table.nama_lengkap_anak, data_pengajar_table.nama_lengkap, ')
             ->join('data_pengajar_table', 'data_pengajar_table.id = absensi_table.mitra_pengajar_id')
             ->join('data_murid_table', 'data_murid_table.id = absensi_table.peserta_didik_id')
+            ->where(["absensi_table.mitra_pengajar_id" => $mitra_pengajar])
             ->orderBy('id desc')->get()->getResultObject();
     }
 
