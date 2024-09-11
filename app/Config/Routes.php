@@ -109,6 +109,13 @@ $routes->group('admin', static function ($routes) {
     $routes->post('presensi/delete', 'Admin\PresensiController::delete');
     $routes->get('presensi/getPesertaDidik', 'Admin\PresensiController::getPesertaDidik');
 
+    $routes->get('absensi', 'Admin\AbsensiController::index');
+    $routes->post('absensi/insert', 'Admin\AbsensiController::insert');
+    $routes->get('absensi/edit', 'Admin\AbsensiController::edit');
+    $routes->post('absensi/update', 'Admin\AbsensiController::update');
+    $routes->post('absensi/delete', 'Admin\AbsensiController::delete');
+    $routes->get('absensi/getPesertaDidik', 'Admin\AbsensiController::getPesertaDidik');
+
     $routes->get('invoice', 'Admin\InvoiceController::index');
     $routes->post('invoice/cek_invoice', 'Admin\InvoiceController::cek_invoice');
     $routes->get('invoice/getPesertaDidik', 'Admin\InvoiceController::getPesertaDidik');

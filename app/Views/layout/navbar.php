@@ -142,7 +142,11 @@
                          <i class="bi bi-circle"></i><span>Presensi Mitra</span>
                      </a>
                  </li>
-
+                 <li>
+                     <a href="/admin/absensi">
+                         <i class="bi bi-circle"></i><span>Absensi</span>
+                     </a>
+                 </li>
              </ul>
          </li>
 

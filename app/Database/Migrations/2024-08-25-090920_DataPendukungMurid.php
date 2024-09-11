@@ -15,7 +15,6 @@ class DataPendukungMurid extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-
             'peserta_didik_id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
