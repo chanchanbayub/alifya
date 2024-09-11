@@ -615,14 +615,14 @@
         e.preventDefault();
         let id = $(this).attr('data-id');
         $.ajax({
-            url: '/admin/harga_mitra/edit',
+            url: '/admin/absensi/edit',
             method: 'get',
             dataType: 'JSON',
             data: {
                 id: id,
             },
             success: function(response) {
-                $("#id_delete").val(response.harga_mitra.id);
+                $("#id_delete").val(response.absensi.id);
             }
         });
     });
@@ -631,7 +631,7 @@
         e.preventDefault();
         let id = $("#id_delete").val();
         $.ajax({
-            url: '/admin/harga_mitra/delete',
+            url: '/admin/absensi/delete',
             method: 'post',
             dataType: 'JSON',
             data: {

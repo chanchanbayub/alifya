@@ -165,12 +165,12 @@ class AbsensiController extends BaseController
 
             $id = $this->request->getVar('id');
 
-            $harga = $this->hargaMitraModel->where(["id" => $id])->first();
+            $absensi = $this->absensiModel->where(["id" => $id])->first();
 
-            $this->hargaMitraModel->delete($harga["id"]);
+            $this->absensiModel->delete($absensi["id"]);
 
             $alert = [
-                'success' => 'Upah Mitra Berhasil di Hapus !'
+                'success' => 'Absensi Berhasil di Hapus !'
             ];
 
             return json_encode($alert);
