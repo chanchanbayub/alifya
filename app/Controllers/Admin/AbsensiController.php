@@ -143,14 +143,14 @@ class AbsensiController extends BaseController
 
             $id = $this->request->getVar('id');
 
-            $harga = $this->hargaMitraModel->where(["id" => $id])->get()->getRowObject();
+            $absensi = $this->absensiModel->getDataAbsensiWhereId($id);
 
             $mitra_pengajar = $this->pengajarModel->getDataPengajarStatusAktif();
 
-            $peserta_didik = $this->kelompokBelajarModel->getPesertaDidikWhereMitraPengajar($harga->mitra_pengajar_id);
+            $peserta_didik = $this->kelompokBelajarModel->getPesertaDidikWhereMitraPengajar($absensi->mitra_pengajar_id);
 
             $data = [
-                'harga_mitra' => $harga,
+                'absensi' => $absensi,
                 'mitra_pengajar' => $mitra_pengajar,
                 'murid' => $peserta_didik
             ];

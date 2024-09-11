@@ -54,7 +54,7 @@
                                             <td> <?= $absensi->nama_lengkap ?></td>
                                             <td><?= $absensi->nama_lengkap_anak ?></td>
                                             <td>
-                                                <button class="btn btn-sm btn-outline-primary" id="edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $absensi->id ?>" type="button">
+                                                <button class="btn btn-sm btn-outline-primary" id="views" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-id="<?= $absensi->id ?>" type="button">
                                                     <i class="bi bi-eye"></i>
                                                 </button>
                                                 <button class="btn btn-sm btn-outline-warning" id="edit" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $absensi->id ?>" type="button">
@@ -261,6 +261,61 @@
 </div>
 <!-- End hapus Modal-->
 
+<!-- View Modal -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Lihat Data Absen</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td scope="col">Tanggal</td>
+                            <td scope="col">:</td>
+                            <td id="tanggal_data"></td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Mitra Pengajar</td>
+                            <td scope="col">:</td>
+                            <td id="mitra_pengajar_data"></td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Peserta Didik</td>
+                            <td scope="col">:</td>
+                            <td id="peserta_didik_data"></td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Absen</td>
+                            <td scope="col">:</td>
+                            <td id="absen_data"></td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Keterangan</td>
+                            <td scope="col">:</td>
+                            <td id="keterangan_data"></td>
+                        </tr>
+                        <tr>
+                            <td scope="col">Pergantian Jadwal</td>
+                            <td scope="col">:</td>
+                            <td id="pergantian_jadwal_data"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
@@ -399,6 +454,36 @@
                 }
             });
         })
+    });
+
+    $(document).on('click', "#views", function(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-id');
+        $.ajax({
+            url: '/admin/absensi/edit',
+            method: 'get',
+            dataType: 'JSON',
+            data: {
+                id: id,
+            },
+            success: function(response) {
+                $("#tanggal_data").html(response.absensi.tanggal)
+                $("#mitra_pengajar_data").html(response.absensi.nama_lengkap)
+                $("#peserta_didik_data").html(response.absensi.nama_lengkap_anak)
+                if (response.absensi.absen == 1) {
+                    $("#absen_data").html('Anak Izin')
+                } else if (response.absensi.absen == 2) {
+                    $("#absen_data").html('Miss Izin')
+                } else if (response.absensi.absen == 3) {
+                    $("#absen_data").html('Anak Sakit')
+                } else {
+                    $("#absen_data").html('Miss Sakit')
+                }
+
+                $("#keterangan_data").html(response.absensi.keterangan)
+                $("#pergantian_jadwal_data").html(response.absensi.pergantian_jadwal)
+            }
+        });
     });
 
     // Aksi Edit 
