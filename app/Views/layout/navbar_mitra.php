@@ -70,6 +70,11 @@
                          <i class="bi bi-circle"></i><span>Presensi Mitra</span>
                      </a>
                  </li>
+                 <li>
+                     <a href="/mitra_pengajar/absensi">
+                         <i class="bi bi-circle"></i><span>Absensi Mitra</span>
+                     </a>
+                 </li>
 
              </ul>
          </li>

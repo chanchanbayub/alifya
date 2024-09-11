@@ -156,4 +156,11 @@ $routes->group('mitra_pengajar', static function ($routes) {
     $routes->post('presensi/update', 'Mitra\PresensiController::update');
     $routes->post('presensi/delete', 'Mitra\PresensiController::delete');
     $routes->get('presensi/getPesertaDidik', 'Mitra\PresensiController::getPesertaDidik');
+
+    $routes->get('absensi', 'Mitra\AbsensiController::index');
+    $routes->post('absensi/insert', 'Mitra\AbsensiController::insert');
+    $routes->get('absensi/edit', 'Mitra\AbsensiController::edit');
+    $routes->post('absensi/update', 'Mitra\AbsensiController::update');
+    $routes->post('absensi/delete', 'Mitra\AbsensiController::delete');
+    $routes->get('absensi/getPesertaDidik', 'Mitra\AbsensiController::getPesertaDidik');
 });

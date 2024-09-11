@@ -144,7 +144,7 @@
                  </li>
                  <li>
                      <a href="/admin/absensi">
-                         <i class="bi bi-circle"></i><span>Absensi</span>
+                         <i class="bi bi-circle"></i><span>Absensi Mitra</span>
                      </a>
                  </li>
              </ul>
