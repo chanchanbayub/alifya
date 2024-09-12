@@ -128,6 +128,32 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="nama_ayah" class="col-form-label">Nama Ayah :</label>
+                        <input type="text" class="form-control" id="nama_ayah" name="nama_ayah">
+                        <div class="invalid-feedback error-nama-ayah">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pekerjaan_ayah" class="col-form-label">Pekerjaan Ayah :</label>
+                        <input type="text" class="form-control" id="pekerjaan_ayah" name="pekerjaan_ayah">
+                        <div class="invalid-feedback error-pekerjaan-ayah">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nama_ibu" class="col-form-label">Nama ibu :</label>
+                        <input type="text" class="form-control" id="nama_ibu" name="nama_ayah">
+                        <div class="invalid-feedback error-nama-ibu">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="pekerjaan_ibu" class="col-form-label">Pekerjaan ibu :</label>
+                        <input type="text" class="form-control" id="pekerjaan_ibu" name="pekerjaan_ibu">
+                        <div class="invalid-feedback error-pekerjaan-ibu">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="nomor_whatsapp_wali" class="col-form-label">Nomor Whatsapp Wali :</label>
                         <input type="text" class="form-control" id="nomor_whatsapp_wali" name="nomor_whatsapp_wali" placeholder="6282xxxxx">
                         <div class="invalid-feedback error-nomor-wali">
@@ -136,7 +162,7 @@
 
                     <div class="mb-3">
                         <label for="username_instagram_wali" class="col-form-label">Username Instagram Wali :</label>
-                        <input type="text" class="form-control" id="username_instagram_wali" name="username_instagram_wali" placeholder="@instagram">
+                        <input type="text" class="form-control" id="username_instagram_wali" name="username_instagram_wali" placeholder="instagram">
                         <div class="invalid-feedback error-username-ig-wali">
                         </div>
                     </div>
@@ -261,6 +287,34 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="nama_ayah_edit" class="col-form-label">Nama Ayah:</label>
+                        <input type="text" class="form-control" id="nama_ayah_edit" name="nama_ayah">
+                        <div class="invalid-feedback error-nama-ayah-edit">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pekerjaan_ayah_edit" class="col-form-label">Pekerjaan Ayah:</label>
+                        <input type="text" class="form-control" id="pekerjaan_ayah_edit" name="pekerjaan_ayah">
+                        <div class="invalid-feedback error-pekerjaan-ayah-edit">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nama_ibu_edit" class="col-form-label">Nama Ibu:</label>
+                        <input type="text" class="form-control" id="nama_ibu_edit" name="nama_ibu">
+                        <div class="invalid-feedback error-nama-ibu-edit">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pekerjaan_ibu_edit" class="col-form-label">Pekerjaan Ibu:</label>
+                        <input type="text" class="form-control" id="pekerjaan_ibu_edit" name="pekerjaan_ibu">
+                        <div class="invalid-feedback error-pekerjaan-ibu-edit">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="nomor_whatsapp_wali_edit" class="col-form-label">Nomor Whatsapp Wali:</label>
                         <input type="text" class="form-control" id="nomor_whatsapp_wali_edit" name="nomor_whatsapp_wali">
                         <div class="invalid-feedback error-nomor-wali-edit">
@@ -371,6 +425,10 @@
             let usia_anak = $("#usia_anak").val();
             let alamat_domisili_anak = $("#alamat_domisili_anak").val();
             let sekolah_anak = $("#sekolah_anak").val();
+            let nama_ayah = $("#nama_ayah").val();
+            let pekerjaan_ayah = $("#pekerjaan_ayah").val();
+            let nama_ibu = $("#nama_ibu").val();
+            let pekerjaan_ibu = $("#pekerjaan_ibu").val();
             let nomor_whatsapp_wali = $("#nomor_whatsapp_wali").val();
             let username_instagram_wali = $("#username_instagram_wali").val();
             let program_belajar_id = $("#program_belajar_id").val();
@@ -388,6 +446,10 @@
             formData.append('usia_anak', usia_anak);
             formData.append('alamat_domisili_anak', alamat_domisili_anak);
             formData.append('sekolah_anak', sekolah_anak);
+            formData.append('nama_ayah', nama_ayah);
+            formData.append('pekerjaan_ayah', pekerjaan_ayah);
+            formData.append('nama_ibu', nama_ibu);
+            formData.append('pekerjaan_ibu', pekerjaan_ibu);
             formData.append('nomor_whatsapp_wali', nomor_whatsapp_wali);
             formData.append('username_instagram_wali', username_instagram_wali);
             formData.append('program_belajar_id', program_belajar_id);
@@ -449,6 +511,34 @@
                         } else {
                             $("#sekolah_anak").removeClass('is-invalid');
                             $(".error-sekolah-anak").html('');
+                        }
+                        if (response.error.nama_ayah) {
+                            $("#nama_ayah").addClass('is-invalid');
+                            $(".error-nama-ayah").html(response.error.nama_ayah);
+                        } else {
+                            $("#nama_ayah").removeClass('is-invalid');
+                            $(".error-nama-ayah").html('');
+                        }
+                        if (response.error.pekerjaan_ayah) {
+                            $("#pekerjaan_ayah").addClass('is-invalid');
+                            $(".error-pekerjaan-ayah").html(response.error.pekerjaan_ayah);
+                        } else {
+                            $("#pekerjaan_ayah").removeClass('is-invalid');
+                            $(".error-pekerjaan-ayah").html('');
+                        }
+                        if (response.error.nama_ibu) {
+                            $("#nama_ibu").addClass('is-invalid');
+                            $(".error-nama-ibu").html(response.error.nama_ibu);
+                        } else {
+                            $("#nama_ibu").removeClass('is-invalid');
+                            $(".error-nama-ibu").html('');
+                        }
+                        if (response.error.pekerjaan_ibu) {
+                            $("#pekerjaan_ibu").addClass('is-invalid');
+                            $(".error-pekerjaan-ibu").html(response.error.pekerjaan_ibu);
+                        } else {
+                            $("#pekerjaan_ibu").removeClass('is-invalid');
+                            $(".error-pekerjaan-ibu").html('');
                         }
                         if (response.error.nomor_whatsapp_wali) {
                             $("#nomor_whatsapp_wali").addClass('is-invalid');
