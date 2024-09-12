@@ -23,7 +23,7 @@ class PresensiModel extends Model
             ->select("presensi_table.id, presensi_table.tanggal_masuk, presensi_table.jam_masuk, presensi_table.dokumentasi, data_pengajar_table.nama_lengkap, data_murid_table.nama_lengkap_anak")
             ->join('data_pengajar_table', 'data_pengajar_table.id = presensi_table.mitra_pengajar_id')
             ->join('data_murid_table', 'data_murid_table.id = presensi_table.peserta_didik_id')
-            ->orderBy('id desc')
+            ->orderBy('presensi_table.tanggal_masuk desc')
             ->get()->getResultObject();
     }
 
@@ -37,7 +37,7 @@ class PresensiModel extends Model
             ->where(["presensi_table.mitra_pengajar_id" => $mitra_pengajar_id])
             ->where('MONTH(presensi_table.tanggal_masuk)', $bulan)
             ->where(["presensi_table.peserta_didik_id" => $peserta_didik_id])
-            ->orderBy('presensi_table.id desc')
+            ->orderBy('presensi_table.tanggal_masuk desc')
             ->get()->getResultObject();
     }
 
@@ -51,7 +51,7 @@ class PresensiModel extends Model
             ->where(["presensi_table.mitra_pengajar_id" => $mitra_pengajar_id])
             ->where('MONTH(presensi_table.tanggal_masuk)', $bulan)
 
-            ->orderBy('presensi_table.id desc')
+            ->orderBy('presensi_table.tanggal_masuk desc')
             ->get()->getResultObject();
     }
 }
