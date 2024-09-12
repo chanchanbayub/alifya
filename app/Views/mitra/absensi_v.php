@@ -123,9 +123,9 @@
                         <select name="absen" id="absen" class="form-select">
                             <option value="">--Silahkan Pilih--</option>
                             <option value="1">Anak Izin</option>
-                            <option value="2">Miss Izin</option>
+                            <option value="2">Guru Izin</option>
                             <option value="3">Anak Sakit</option>
-                            <option value="4">Miss Sakit</option>
+                            <option value="4">Guru Sakit</option>
                         </select>
                         <div class="invalid-feedback error-absen">
                         </div>
@@ -203,9 +203,9 @@
                         <select name="absen" id="absen_edit" class="form-select">
                             <option value="">--Silahkan Pilih--</option>
                             <option value="1">Anak Izin</option>
-                            <option value="2">Miss Izin</option>
+                            <option value="2">Guru Izin</option>
                             <option value="3">Anak Sakit</option>
-                            <option value="4">Miss Sakit</option>
+                            <option value="4">Guru Sakit</option>
                         </select>
                         <div class="invalid-feedback error-bulan-mitra-edit">
                         </div>
