@@ -133,7 +133,6 @@ class MuridController extends BaseController
                         'required' => 'Hari Tidak Boleh Kosong!'
                     ]
                 ],
-
                 'waktu_belajar' => [
                     'rules' => 'required',
                     'errors' => [
@@ -218,7 +217,7 @@ class MuridController extends BaseController
                     'nama_ayah' => strtolower($nama_ayah),
                     'pekerjaan_ayah' => strtolower($pekerjaan_ayah),
                     'nama_ibu' => strtolower($nama_ibu),
-                    'pekerjaan_ibu' => strtolower($sekolah_anak),
+                    'pekerjaan_ibu' => strtolower($pekerjaan_ibu),
                     'nomor_whatsapp_wali' => strtolower($nomor_whatsapp_wali),
                     'username_instagram_wali' => strtolower($username_instagram_wali),
                     'program_belajar_id' => strtolower($program_belajar_id),
@@ -346,6 +345,31 @@ class MuridController extends BaseController
                         'required' => 'Nama Sekolah Tidak Boleh Kosong !'
                     ]
                 ],
+
+                'nama_ayah' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Nama Ayah Tidak Boleh Kosong !'
+                    ]
+                ],
+                'pekerjaan_ayah' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Pekerjaan Ayah Tidak Boleh Kosong !'
+                    ]
+                ],
+                'nama_ibu' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Nama Ibu Tidak Boleh Kosong !'
+                    ]
+                ],
+                'pekerjaan_ibu' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Pekerjaan Ibu Tidak Boleh Kosong !'
+                    ]
+                ],
                 'nomor_whatsapp_wali' => [
                     'rules' => 'required',
                     'errors' => [
@@ -400,6 +424,10 @@ class MuridController extends BaseController
                         'usia_anak' => $this->validation->getError('usia_anak'),
                         'alamat_domisili_anak' => $this->validation->getError('alamat_domisili_anak'),
                         'sekolah_anak' => $this->validation->getError('sekolah_anak'),
+                        'nama_ayah' => $this->validation->getError('nama_ayah'),
+                        'pekerjaan_ayah' => $this->validation->getError('pekerjaan_ayah'),
+                        'nama_ibu' => $this->validation->getError('nama_ibu'),
+                        'pekerjaan_ibu' => $this->validation->getError('pekerjaan_ibu'),
                         'nomor_whatsapp_wali' => $this->validation->getError('nomor_whatsapp_wali'),
                         'username_instagram_wali' => $this->validation->getError('username_instagram_wali'),
                         'program_belajar_id' => $this->validation->getError('program_belajar_id'),
@@ -423,6 +451,10 @@ class MuridController extends BaseController
                 $usia_anak = $this->request->getPost('usia_anak');
                 $alamat_domisili_anak = $this->request->getPost('alamat_domisili_anak');
                 $sekolah_anak = $this->request->getPost('sekolah_anak');
+                $nama_ayah = $this->request->getPost('nama_ayah');
+                $pekerjaan_ayah = $this->request->getPost('pekerjaan_ayah');
+                $nama_ibu = $this->request->getPost('nama_ibu');
+                $pekerjaan_ibu = $this->request->getPost('pekerjaan_ibu');
                 $nomor_whatsapp_wali = $this->request->getPost('nomor_whatsapp_wali');
                 $username_instagram_wali = $this->request->getPost('username_instagram_wali');
                 $program_belajar_id = $this->request->getPost('program_belajar_id');
@@ -454,6 +486,10 @@ class MuridController extends BaseController
                     'usia_anak' => strtolower($usia_anak),
                     'alamat_domisili_anak' => strtolower($alamat_domisili_anak),
                     'sekolah_anak' => strtolower($sekolah_anak),
+                    'nama_ayah' => strtolower($nama_ayah),
+                    'pekerjaan_ayah' => strtolower($pekerjaan_ayah),
+                    'nama_ibu' => strtolower($nama_ibu),
+                    'pekerjaan_ibu' => strtolower($pekerjaan_ibu),
                     'nomor_whatsapp_wali' => strtolower($nomor_whatsapp_wali),
                     'username_instagram_wali' => strtolower($username_instagram_wali),
                     'program_belajar_id' => strtolower($program_belajar_id),

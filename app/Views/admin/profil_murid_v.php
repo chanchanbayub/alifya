@@ -78,6 +78,26 @@
                             </div>
 
                             <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Nama Ayah</div>
+                                <div class="col-lg-9 col-md-8"><?= $profil->nama_ayah ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Pekerjaan Ayah</div>
+                                <div class="col-lg-9 col-md-8"><?= $profil->pekerjaan_ayah ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Nama Ibu</div>
+                                <div class="col-lg-9 col-md-8"><?= $profil->nama_ibu ?></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 label">Pekerjaan Ibu</div>
+                                <div class="col-lg-9 col-md-8"><?= $profil->pekerjaan_ibu ?></div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-lg-3 col-md-4 label">Nomor Whatsapp Wali</div>
                                 <div class="col-lg-9 col-md-8"><?= $profil->nomor_whatsapp_wali ?> </div>
                             </div>

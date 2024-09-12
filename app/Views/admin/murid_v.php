@@ -654,6 +654,10 @@
                 $("#usia_anak_edit").val(response.murid.usia_anak);
                 $("#alamat_domisili_anak_edit").val(response.murid.alamat_domisili_anak);
                 $("#sekolah_anak_edit").val(response.murid.sekolah_anak);
+                $("#nama_ayah_edit").val(response.murid.nama_ayah);
+                $("#nama_ibu_edit").val(response.murid.nama_ibu);
+                $("#pekerjaan_ayah_edit").val(response.murid.pekerjaan_ayah);
+                $("#pekerjaan_ibu_edit").val(response.murid.pekerjaan_ibu);
                 $("#nomor_whatsapp_wali_edit").val(response.murid.nomor_whatsapp_wali);
                 $("#username_instagram_wali_edit").val(response.murid.username_instagram_wali);
                 $("#hari_belajar_edit").val(response.murid.hari_belajar);
@@ -761,6 +765,10 @@
         let usia_anak = $("#usia_anak_edit").val();
         let alamat_domisili_anak = $("#alamat_domisili_anak_edit").val();
         let sekolah_anak = $("#sekolah_anak_edit").val();
+        let nama_ayah = $("#nama_ayah_edit").val();
+        let nama_ibu = $("#nama_ibu_edit").val();
+        let pekerjaan_ayah = $("#pekerjaan_ayah_edit").val();
+        let pekerjaan_ibu = $("#pekerjaan_ibu_edit").val();
         let nomor_whatsapp_wali = $("#nomor_whatsapp_wali_edit").val();
         let username_instagram_wali = $("#username_instagram_wali_edit").val();
         let program_belajar_id = $("#program_belajar_id_edit").val();
@@ -780,6 +788,10 @@
         formData.append('usia_anak', usia_anak);
         formData.append('alamat_domisili_anak', alamat_domisili_anak);
         formData.append('sekolah_anak', sekolah_anak);
+        formData.append('nama_ayah', nama_ayah);
+        formData.append('nama_ibu', nama_ibu);
+        formData.append('pekerjaan_ayah', pekerjaan_ayah);
+        formData.append('pekerjaan_ibu', pekerjaan_ibu);
         formData.append('nomor_whatsapp_wali', nomor_whatsapp_wali);
         formData.append('username_instagram_wali', username_instagram_wali);
         formData.append('program_belajar_id', program_belajar_id);
@@ -788,7 +800,6 @@
         formData.append('waktu_belajar', waktu_belajar);
         formData.append('foto_anak', foto_anak);
         formData.append('status_murid_id', status_murid_id);
-
 
         $.ajax({
             url: '/admin/data_murid/update',
@@ -808,109 +819,103 @@
                 $('.update').prop('disabled', false);
                 if (response.error) {
                     if (response.error.nama_lengkap_anak) {
-                        $("#nama_lengkap_anak").addClass('is-invalid');
-                        $(".error-nama").html(response.error.nama_lengkap_anak);
+                        $("#nama_lengkap_anak_edit").addClass('is-invalid');
+                        $(".error-nama-edit").html(response.error.nama_lengkap_anak);
                     } else {
-                        $("#nama_lengkap_anak").removeClass('is-invalid');
-                        $(".error-nama").html('');
+                        $("#nama_lengkap_anak_edit").removeClass('is-invalid');
+                        $(".error-nama-edit").html('');
                     }
                     if (response.error.tanggal_lahir_anak) {
-                        $("#tanggal_lahir_anak").addClass('is-invalid');
-                        $(".error-tanggal-lahir").html(response.error.tanggal_lahir_anak);
+                        $("#tanggal_lahir_anak_edit").addClass('is-invalid');
+                        $(".error-tanggal-lahir-edit").html(response.error.tanggal_lahir_anak);
                     } else {
-                        $("#tanggal_lahir_anak").removeClass('is-invalid');
-                        $(".error-tanggal-lahir").html('');
+                        $("#tanggal_lahir_anak_edit").removeClass('is-invalid');
+                        $(".error-tanggal-lahir-edit").html('');
                     }
                     if (response.error.usia_anak) {
-                        $("#usia_anak").addClass('is-invalid');
-                        $(".error-usia_anak").html(response.error.usia_anak);
+                        $("#usia_anak_edit").addClass('is-invalid');
+                        $(".error-usia_anak-edit").html(response.error.usia_anak);
                     } else {
-                        $("#usia_anak").removeClass('is-invalid');
-                        $(".error-usia_anak").html('');
+                        $("#usia_anak_edit").removeClass('is-invalid');
+                        $(".error-usia_anak-edit").html('');
                     }
                     if (response.error.alamat_domisili_anak) {
-                        $("#alamat_domisili_anak").addClass('is-invalid');
-                        $(".error-alamat").html(response.error.alamat_domisili_anak);
+                        $("#alamat_domisili_anak_edit").addClass('is-invalid');
+                        $(".error-alamat-edit").html(response.error.alamat_domisili_anak);
                     } else {
                         $("#alamat_domisili_anak").removeClass('is-invalid');
-                        $(".error-alamat").html('');
+                        $(".error-alamat-edit").html('');
                     }
                     if (response.error.sekolah_anak) {
-                        $("#sekolah_anak").addClass('is-invalid');
-                        $(".error-sekolah-anak").html(response.error.sekolah_anak);
+                        $("#sekolah_anak_edit").addClass('is-invalid');
+                        $(".error-sekolah-anak-edit").html(response.error.sekolah_anak);
                     } else {
-                        $("#sekolah_anak").removeClass('is-invalid');
-                        $(".error-sekolah-anak").html('');
+                        $("#sekolah_anak_edit").removeClass('is-invalid');
+                        $(".error-sekolah-anak-edit").html('');
                     }
                     if (response.error.nomor_whatsapp_wali) {
-                        $("#nomor_whatsapp_wali").addClass('is-invalid');
-                        $(".error-nomor-wali").html(response.error.nomor_whatsapp_wali);
+                        $("#nomor_whatsapp_wali_edit").addClass('is-invalid');
+                        $(".error-nomor-wali-edit").html(response.error.nomor_whatsapp_wali);
                     } else {
-                        $("#nomor_whatsapp_wali").removeClass('is-invalid');
-                        $(".error-nomor-wali").html('');
+                        $("#nomor_whatsapp_wali_edit").removeClass('is-invalid');
+                        $(".error-nomor-wali-edit").html('');
                     }
-                    if (response.error.nomor_whatsapp_wali) {
-                        $("#nomor_whatsapp_wali").addClass('is-invalid');
-                        $(".error-nomor-wali").html(response.error.nomor_whatsapp_wali);
-                    } else {
-                        $("#nomor_whatsapp_wali").removeClass('is-invalid');
-                        $(".error-nomor-wali").html('');
-                    }
+
                     if (response.error.username_instagram_wali) {
-                        $("#username_instagram_wali").addClass('is-invalid');
-                        $(".error-username-ig-wali").html(response.error.username_instagram_wali);
+                        $("#username_instagram_wali_edit").addClass('is-invalid');
+                        $(".error-username-ig-wali-edit").html(response.error.username_instagram_wali);
                     } else {
-                        $("#username_instagram_wali").removeClass('is-invalid');
-                        $(".error-username-ig-wali").html('');
+                        $("#username_instagram_wali_edit").removeClass('is-invalid');
+                        $(".error-username-ig-wali-edit").html('');
                     }
                     if (response.error.program_belajar_id) {
-                        $("#program_belajar_id").addClass('is-invalid');
-                        $(".error-program-belajar").html(response.error.program_belajar_id);
+                        $("#program_belajar_id_edit").addClass('is-invalid');
+                        $(".error-program-belajar-edit").html(response.error.program_belajar_id);
                     } else {
-                        $("#program_belajar_id").removeClass('is-invalid');
-                        $(".error-program-belajar").html('');
+                        $("#program_belajar_id_edit").removeClass('is-invalid');
+                        $(".error-program-belajar-edit").html('');
                     }
                     if (response.error.materi_belajar_id) {
-                        $("#materi_belajar_id").addClass('is-invalid');
-                        $(".error-materi-belajar").html(response.error.materi_belajar_id);
+                        $("#materi_belajar_id_edit").addClass('is-invalid');
+                        $(".error-materi-belajar-edit").html(response.error.materi_belajar_id);
                     } else {
-                        $("#materi_belajar_id").removeClass('is-invalid');
-                        $(".error-materi-belajar").html('');
+                        $("#materi_belajar_id_edit").removeClass('is-invalid');
+                        $(".error-materi-belajar-edit").html('');
                     }
                     if (response.error.materi_belajar_id) {
-                        $("#materi_belajar_id").addClass('is-invalid');
-                        $(".error-materi-belajar").html(response.error.materi_belajar_id);
+                        $("#materi_belajar_id_edit").addClass('is-invalid');
+                        $(".error-materi-belajar-edit").html(response.error.materi_belajar_id);
                     } else {
-                        $("#materi_belajar_id").removeClass('is-invalid');
-                        $(".error-materi-belajar").html('');
+                        $("#materi_belajar_id_edit").removeClass('is-invalid');
+                        $(".error-materi-belajar-edit").html('');
                     }
                     if (response.error.hari_belajar) {
-                        $("#hari_belajar").addClass('is-invalid');
-                        $(".error-hari-belajar").html(response.error.hari_belajar);
+                        $("#hari_belajar_edit").addClass('is-invalid');
+                        $(".error-hari-belajar-edit").html(response.error.hari_belajar);
                     } else {
-                        $("#hari_belajar").removeClass('is-invalid');
-                        $(".error-hari-belajar").html('');
+                        $("#hari_belajar_edit").removeClass('is-invalid');
+                        $(".error-hari-belajar-edit").html('');
                     }
                     if (response.error.waktu_belajar) {
-                        $("#waktu_belajar").addClass('is-invalid');
-                        $(".error-waktu").html(response.error.waktu_belajar);
+                        $("#waktu_belajar_edit").addClass('is-invalid');
+                        $(".error-waktu-edit").html(response.error.waktu_belajar);
                     } else {
-                        $("#waktu_belajar").removeClass('is-invalid');
-                        $(".error-waktu").html('');
+                        $("#waktu_belajar_edit").removeClass('is-invalid');
+                        $(".error-waktu-edit").html('');
                     }
                     if (response.error.foto_anak) {
-                        $("#foto_anak").addClass('is-invalid');
-                        $(".error-foto-anak").html(response.error.foto_anak);
+                        $("#foto_anak_edit").addClass('is-invalid');
+                        $(".error-foto-anak-edit").html(response.error.foto_anak);
                     } else {
-                        $("#foto_anak").removeClass('is-invalid');
-                        $(".error-foto-anak").html('');
+                        $("#foto_anak_edit").removeClass('is-invalid');
+                        $(".error-foto-anak-edit").html('');
                     }
                     if (response.error.status_murid_id) {
-                        $("#status_murid_id").addClass('is-invalid');
-                        $(".error-status-murid").html(response.error.status_murid_id);
+                        $("#status_murid_id_edit").addClass('is-invalid');
+                        $(".error-status-murid-edit").html(response.error.status_murid_id);
                     } else {
-                        $("#status_murid_id").removeClass('is-invalid');
-                        $(".error-status-murid").html('');
+                        $("#status_murid_id_edit").removeClass('is-invalid');
+                        $(".error-status-murid-edit").html('');
                     }
 
 
